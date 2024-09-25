@@ -135,18 +135,6 @@ public class Shader extends Pointer {
         _setUniformVec2(address, name, value);
     }
 
-    public void setUniformVec3(String name, Vector3 value) throws ArqanoreException {
-        _setUniformVec3(address, name, value);
-    }
-
-    public void setUniformMat3(String name, Matrix3 value) throws ArqanoreException {
-        _setUniformMat3(address, name, value);
-    }
-
-    public void setUniformMat4(String name, Matrix4 value) throws ArqanoreException {
-        _setUniformMat4(address, name, value);
-    }
-
     public void setUniformRgba(String name, Color value) throws ArqanoreException {
         _setUniformRgba(address, name, value);
     }
@@ -198,12 +186,6 @@ public class Shader extends Pointer {
     private native void _setUniform4d(long shader, String name, double d1, double d2, double d3, double d4);
 
     private native void _setUniformVec2(long shader, String name, Vector2 value);
-
-    private native void _setUniformVec3(long shader, String name, Vector3 value);
-
-    private native void _setUniformMat3(long shader, String name, Matrix3 value);
-
-    private native void _setUniformMat4(long shader, String name, Matrix4 value);
 
     private native void _setUniformRgba(long shader, String name, Color value);
 

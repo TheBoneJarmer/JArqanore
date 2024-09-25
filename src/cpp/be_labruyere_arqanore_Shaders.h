@@ -55,22 +55,6 @@ JNIEXPORT jlong JNICALL Java_be_labruyere_arqanore_Shaders__1getFont
 JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Shaders__1setFont
   (JNIEnv *, jclass, jlong);
 
-/*
- * Class:     be_labruyere_arqanore_Shaders
- * Method:    _getModel
- * Signature: ()J
- */
-JNIEXPORT jlong JNICALL Java_be_labruyere_arqanore_Shaders__1getModel
-  (JNIEnv *, jclass);
-
-/*
- * Class:     be_labruyere_arqanore_Shaders
- * Method:    _setModel
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Shaders__1setModel
-  (JNIEnv *, jclass, jlong);
-
 #ifdef __cplusplus
 }
 #endif

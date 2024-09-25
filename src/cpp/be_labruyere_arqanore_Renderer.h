@@ -9,30 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     be_labruyere_arqanore_Renderer
- * Method:    _generateModelMatrix
- * Signature: (Lbe/labruyere/arqanore/Vector3;Lbe/labruyere/arqanore/Quaternion;Lbe/labruyere/arqanore/Vector3;)Lbe/labruyere/arqanore/Matrix4;
- */
-JNIEXPORT jobject JNICALL Java_be_labruyere_arqanore_Renderer__1generateModelMatrix
-  (JNIEnv *, jclass, jobject, jobject, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Renderer
- * Method:    _generateViewMatrix
- * Signature: (J)Lbe/labruyere/arqanore/Matrix4;
- */
-JNIEXPORT jobject JNICALL Java_be_labruyere_arqanore_Renderer__1generateViewMatrix
-  (JNIEnv *, jclass, jlong);
-
-/*
- * Class:     be_labruyere_arqanore_Renderer
- * Method:    _generateProjectionMatrix
- * Signature: (JJ)Lbe/labruyere/arqanore/Matrix4;
- */
-JNIEXPORT jobject JNICALL Java_be_labruyere_arqanore_Renderer__1generateProjectionMatrix
-  (JNIEnv *, jclass, jlong, jlong);
-
-/*
- * Class:     be_labruyere_arqanore_Renderer
  * Method:    _setShader
  * Signature: (JI)V
  */
@@ -70,14 +46,6 @@ JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Renderer__1renderPolygon
  */
 JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Renderer__1renderSprite
   (JNIEnv *, jclass, jlong, jlong, jobject, jobject, jobject, jfloat, jint, jint, jboolean, jboolean, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Renderer
- * Method:    _renderModel
- * Signature: (JJLbe/labruyere/arqanore/Vector3;Lbe/labruyere/arqanore/Quaternion;Lbe/labruyere/arqanore/Vector3;I)V
- */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Renderer__1renderModel
-  (JNIEnv *, jclass, jlong, jlong, jobject, jobject, jobject, jint);
 
 #ifdef __cplusplus
 }

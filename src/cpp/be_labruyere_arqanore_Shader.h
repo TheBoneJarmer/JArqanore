@@ -153,30 +153,6 @@ JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Shader__1setUniformVec2
 
 /*
  * Class:     be_labruyere_arqanore_Shader
- * Method:    _setUniformVec3
- * Signature: (JLjava/lang/String;Lbe/labruyere/arqanore/Vector3;)V
- */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Shader__1setUniformVec3
-  (JNIEnv *, jobject, jlong, jstring, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Shader
- * Method:    _setUniformMat3
- * Signature: (JLjava/lang/String;Lbe/labruyere/arqanore/Matrix3;)V
- */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Shader__1setUniformMat3
-  (JNIEnv *, jobject, jlong, jstring, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Shader
- * Method:    _setUniformMat4
- * Signature: (JLjava/lang/String;Lbe/labruyere/arqanore/Matrix4;)V
- */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Shader__1setUniformMat4
-  (JNIEnv *, jobject, jlong, jstring, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Shader
  * Method:    _setUniformRgba
  * Signature: (JLjava/lang/String;Lbe/labruyere/arqanore/Color;)V
  */
