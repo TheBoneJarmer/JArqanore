@@ -36,14 +36,6 @@ public class Shaders {
     }
 
     /**
-     * The default model shader
-     * @return A shader object
-     */
-    public static Shader getModel() {
-        return new Shader(_getModel(), PointerType.MANAGED);
-    }
-
-    /**
      * Sets the default sprite shader.
      * @param shader The shader object
      * @throws ArqanoreException When the shader is null
@@ -82,19 +74,6 @@ public class Shaders {
         _setFont(shader.getAddress());
     }
 
-    /**
-     * Sets the default model shader.
-     * @param shader The shader object
-     * @throws ArqanoreException When the shader is null
-     */
-    public static void setModel(Shader shader) throws ArqanoreException {
-        if (shader == null) {
-            throw new ArqanoreException("Shader cannot be null");
-        }
-
-        _setModel(shader.getAddress());
-    }
-
     private static native long _getSprite();
 
     private static native void _setSprite(long shader);
@@ -106,8 +85,4 @@ public class Shaders {
     private static native long _getFont();
 
     private static native void _setFont(long shader);
-
-    private static native long _getModel();
-
-    private static native void _setModel(long shader);
 }

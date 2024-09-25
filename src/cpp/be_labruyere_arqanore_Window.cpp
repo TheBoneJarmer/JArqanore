@@ -12,8 +12,7 @@
 JavaCallback *window_open_cb_data;
 JavaCallback *window_close_cb_data;
 JavaCallback *window_update_cb_data;
-JavaCallback *window_render2d_cb_data;
-JavaCallback *window_render3d_cb_data;
+JavaCallback *window_render_cb_data;
 JavaCallback *window_resize_cb_data;
 JavaCallback *window_position_cb_data;
 JavaCallback *window_char_cb_data;
@@ -48,7 +47,7 @@ void window_close_cb(arqanore::Window *window) {
     handle_java_callback(window, window_close_cb_data);
 }
 
-void window_update_cb(arqanore::Window *window, double at) {
+void window_update_cb(arqanore::Window *window, double dt) {
     auto cb = window_update_cb_data;
 
     if (cb == nullptr || cb->is_empty()) {
@@ -59,7 +58,7 @@ void window_update_cb(arqanore::Window *window, double at) {
     auto cls = cb->cls;
     auto mid = cb->mid;
 
-    env->CallStaticVoidMethod(cls, mid, at);
+    env->CallStaticVoidMethod(cls, mid, dt);
 
     if (env->ExceptionCheck()) {
         env->ExceptionDescribe();
@@ -68,36 +67,8 @@ void window_update_cb(arqanore::Window *window, double at) {
     }
 }
 
-/*void window_opengl_cb(arqanore::Window *window, std::string type, std::string severity, std::string message) {
-    auto cb = window_opengl_cb_data;
-
-    if (cb == nullptr || cb->is_empty()) {
-        return;
-    }
-
-    JNIEnv *env = cb->env;
-    jclass cls = cb->cls;
-    jmethodID mid = cb->mid;
-
-    jstring str_type = convert_java_string(env, type);
-    jstring str_severity = convert_java_string(env, severity);
-    jstring str_message = convert_java_string(env, message);
-
-    env->CallStaticVoidMethod(cls, mid, str_type, str_severity, str_message);
-
-    if (env->ExceptionCheck()) {
-        env->ExceptionDescribe();
-        env->ExceptionClear();
-        window->close();
-    }
-}*/
-
-void window_render2d_cb(arqanore::Window *window) {
-    handle_java_callback(window, window_render2d_cb_data);
-}
-
-void window_render3d_cb(arqanore::Window *window) {
-    handle_java_callback(window, window_render3d_cb_data);
+void window_render_cb(arqanore::Window *window) {
+    handle_java_callback(window, window_render_cb_data);
 }
 
 void window_resize_cb(arqanore::Window *window, int width, int height) {
@@ -277,12 +248,8 @@ void Java_be_labruyere_arqanore_Window__1setUpdateCallback(JNIEnv *env, jobject 
     window_update_cb_data = get_java_callback(env, class_name, method_name, "(D)V");
 }
 
-void Java_be_labruyere_arqanore_Window__1setRender2DCallback(JNIEnv *env, jobject cls, jlong window, jstring class_name, jstring method_name) {
-    window_render2d_cb_data = get_java_callback(env, class_name, method_name, "()V");
-}
-
-void Java_be_labruyere_arqanore_Window__1setRender3DCallback(JNIEnv *env, jobject cls, jlong window, jstring class_name, jstring method_name) {
-    window_render3d_cb_data = get_java_callback(env, class_name, method_name, "()V");
+void Java_be_labruyere_arqanore_Window__1setRenderCallback(JNIEnv *env, jobject cls, jlong window, jstring class_name, jstring method_name) {
+    window_render_cb_data = get_java_callback(env, class_name, method_name, "()V");
 }
 
 void Java_be_labruyere_arqanore_Window__1setResizeCallback(JNIEnv *env, jobject cls, jlong window, jstring class_name, jstring method_name) {
@@ -297,10 +264,6 @@ void Java_be_labruyere_arqanore_Window__1setCharCallback(JNIEnv *env, jobject cl
     window_char_cb_data = get_java_callback(env, class_name, method_name, "(I)V");
 }
 
-/*void Java_be_labruyere_arqanore_Window__1setOpenGLCallback(JNIEnv *env, jobject cls, jlong window, jstring class_name, jstring method_name) {
-    window_opengl_cb_data = get_java_callback(env, class_name, method_name, "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
-}*/
-
 jlong Java_be_labruyere_arqanore_Window__1create(JNIEnv *env, jobject cls, jint width, jint height, jstring title) {
     auto winWidth = (int) width;
     auto winHeight = (int) height;
@@ -310,8 +273,7 @@ jlong Java_be_labruyere_arqanore_Window__1create(JNIEnv *env, jobject cls, jint 
     ptr->on_open(window_open_cb);
     ptr->on_close(window_close_cb);
     ptr->on_update(window_update_cb);
-    ptr->on_render2d(window_render2d_cb);
-    ptr->on_render3d(window_render3d_cb);
+    ptr->on_render(window_render_cb);
     ptr->on_resize(window_resize_cb);
     ptr->on_position(window_position_cb);
     ptr->on_char(window_char_cb);
@@ -325,8 +287,7 @@ void Java_be_labruyere_arqanore_Window__1destroy(JNIEnv *env, jobject cls, jlong
     delete window_open_cb_data;
     delete window_close_cb_data;
     delete window_update_cb_data;
-    delete window_render2d_cb_data;
-    delete window_render3d_cb_data;
+    delete window_render_cb_data;
     delete window_resize_cb_data;
     delete window_position_cb_data;
     delete window_char_cb_data;

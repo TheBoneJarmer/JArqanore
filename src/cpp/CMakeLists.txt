@@ -42,31 +42,7 @@ add_library(jarqanore SHARED
 		be_labruyere_arqanore_Texture.cpp
 		be_labruyere_arqanore_Texture.h
 		be_labruyere_arqanore_Sprite.cpp
-		be_labruyere_arqanore_Sprite.h
-		be_labruyere_arqanore_Vector3.cpp
-		be_labruyere_arqanore_Vector3.h
-		be_labruyere_arqanore_Light.cpp
-		be_labruyere_arqanore_Light.h
-		be_labruyere_arqanore_Camera.cpp
-		be_labruyere_arqanore_Camera.h
-		be_labruyere_arqanore_Material.cpp
-		be_labruyere_arqanore_Material.h
-		be_labruyere_arqanore_Mesh.cpp
-		be_labruyere_arqanore_Mesh.h
-		be_labruyere_arqanore_MeshAnimation.cpp
-		be_labruyere_arqanore_MeshAnimation.h
-		be_labruyere_arqanore_MeshFrame.cpp
-		be_labruyere_arqanore_MeshFrame.h
-		be_labruyere_arqanore_Model.cpp
-		be_labruyere_arqanore_Model.h
-		be_labruyere_arqanore_Scene.cpp
-		be_labruyere_arqanore_Scene.h
-		be_labruyere_arqanore_Matrix3.cpp
-		be_labruyere_arqanore_Matrix3.h
-		be_labruyere_arqanore_Matrix4.cpp
-		be_labruyere_arqanore_Matrix4.h
-		be_labruyere_arqanore_Quaternion.cpp
-		be_labruyere_arqanore_Quaternion.h)
+		be_labruyere_arqanore_Sprite.h)
 
 if (DEFINED ENV{JAVA_HOME})
 	set(JAVA_HOME $ENV{JAVA_HOME})

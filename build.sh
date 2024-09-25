@@ -1,5 +1,3 @@
-#!/bin/bash
-
 JAVAC="$JAVA_HOME/bin/javac"
 JAR="$JAVA_HOME/bin/jar"
 JAVADOC="$JAVA_HOME/bin/javadoc"

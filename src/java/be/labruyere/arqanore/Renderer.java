@@ -13,18 +13,6 @@ public class Renderer {
         Arqanore.init();
     }
 
-    public static Matrix4 generateModelMatrix(Vector3 pos, Quaternion rot, Vector3 scl) {
-        return _generateModelMatrix(pos, rot, scl);
-    }
-
-    public static Matrix4 generateViewMatrix(Camera camera) {
-        return _generateViewMatrix(camera.address);
-    }
-
-    public static Matrix4 generateProjectionMatrix(Camera camera, Window window) {
-        return _generateProjectionMatrix(camera.address, window.address);
-    }
-
     /**
      * Sets a custom shader for a specific target that remains active until the game loop ends or when the user sets another shader.
      *
@@ -133,27 +121,6 @@ public class Renderer {
         renderPolygon(window, polygon, texture, position, scale, origin, offset, angle, flipHor, flipVert, color);
     }
 
-    public static void renderModel(Window window, Model model, Vector3 position, Quaternion rotation, Vector3 scale, int frame) throws ArqanoreException {
-        var winPtr = window.address;
-        var modelPtr = model.address;
-
-        _renderModel(winPtr, modelPtr, position, rotation, scale, frame);
-    }
-
-    public static void renderModel(Window window, Model model, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float rotW, float sclX, float sclY, float sclZ, int frame) throws ArqanoreException {
-        var pos = new Vector3(posX, posY, posZ);
-        var rot = new Quaternion(rotX, rotY, rotZ, rotW);
-        var scl = new Vector3(sclX, sclY, sclZ);
-
-        renderModel(window, model, pos, rot, scl, frame);
-    }
-
-    private static native Matrix4 _generateModelMatrix(Vector3 pos, Quaternion rot, Vector3 scl);
-
-    private static native Matrix4 _generateViewMatrix(long camera);
-
-    private static native Matrix4 _generateProjectionMatrix(long camera, long window);
-
     private static native void _setShader(long shader, int target);
 
     private static native void _switchShader(long shader);
@@ -163,6 +130,4 @@ public class Renderer {
     private static native void _renderPolygon(long window, long polygon, long texture, Vector2 position, Vector2 scale, Vector2 origin, Vector2 offset, float angle, boolean flipHor, boolean flipVert, Color color);
 
     private static native void _renderSprite(long window, long sprite, Vector2 position, Vector2 scale, Vector2 origin, float angle, int frameHor, int frameVert, boolean flipHor, boolean flipVert, Color color);
-
-    private static native void _renderModel(long window, long model, Vector3 position, Quaternion rotation, Vector3 scale, int frame);
 }

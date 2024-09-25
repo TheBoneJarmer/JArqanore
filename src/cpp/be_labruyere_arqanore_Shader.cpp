@@ -177,39 +177,6 @@ void Java_be_labruyere_arqanore_Shader__1setUniformVec2(JNIEnv *env, jobject cls
     }
 }
 
-void Java_be_labruyere_arqanore_Shader__1setUniformVec3(JNIEnv *env, jobject cls, jlong shader, jstring name, jobject obj_vec) {
-    auto ptr = (arqanore::Shader *) shader;
-    auto vec = convert_vector3(env, obj_vec);
-
-    try {
-        ptr->set_uniform_vec3(convert_java_string(env, name), vec);
-    } catch (arqanore::ArqanoreException &ex) {
-        throw_java_exception(env, ex.what());
-    }
-}
-
-void Java_be_labruyere_arqanore_Shader__1setUniformMat3(JNIEnv *env, jobject cls, jlong shader, jstring name, jobject obj_mat) {
-    auto ptr = (arqanore::Shader *) shader;
-    auto mat = convert_matrix3(env, obj_mat);
-
-    try {
-        ptr->set_uniform_mat3(convert_java_string(env, name), mat);
-    } catch (arqanore::ArqanoreException &ex) {
-        throw_java_exception(env, ex.what());
-    }
-}
-
-void Java_be_labruyere_arqanore_Shader__1setUniformMat4(JNIEnv *env, jobject cls, jlong shader, jstring name, jobject obj_mat) {
-    auto ptr = (arqanore::Shader *) shader;
-    auto mat = convert_matrix4(env, obj_mat);
-
-    try {
-        ptr->set_uniform_mat4(convert_java_string(env, name), mat);
-    } catch (arqanore::ArqanoreException &ex) {
-        throw_java_exception(env, ex.what());
-    }
-}
-
 void Java_be_labruyere_arqanore_Shader__1setUniformRgba(JNIEnv *env, jobject cls, jlong shader, jstring name, jobject obj_color) {
     auto ptr = (arqanore::Shader *) shader;
     auto color = convert_color(env, obj_color);

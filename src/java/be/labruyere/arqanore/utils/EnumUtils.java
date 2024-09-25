@@ -246,7 +246,6 @@ public class EnumUtils {
         if (value == ShaderTarget.FONT) return 0;
         if (value == ShaderTarget.POLYGON) return 1;
         if (value == ShaderTarget.SPRITE) return 2;
-        if (value == ShaderTarget.MODEL) return 3;
 
         return -1;
     }
@@ -254,27 +253,6 @@ public class EnumUtils {
     public static int convertShaderSourceType(ShaderSourceType value) {
         if (value == ShaderSourceType.RAW) return 0;
         if (value == ShaderSourceType.FILE) return 1;
-
-        return -1;
-    }
-
-    public static int convertLightType(LightType value) {
-        if (value == LightType.DIRECTIONAL) return 0;
-        if (value == LightType.POINT) return 1;
-
-        return -1;
-    }
-
-    public static LightType convertLightType(int value) {
-        if (value == 0) return LightType.DIRECTIONAL;
-        if (value == 1) return LightType.POINT;
-
-        return null;
-    }
-
-    public static int convertRigidBodyType(RigidBodyType value) {
-        if (value == RigidBodyType.DYNAMIC) return 0;
-        if (value == RigidBodyType.STATIC) return 1;
 
         return -1;
     }

@@ -27,12 +27,3 @@ void Java_be_labruyere_arqanore_Shaders__1setFont(JNIEnv *env, jclass cls, jlong
     auto ptr = (arqanore::Shader *) shader;
     arqanore::Shaders::font = *ptr;
 }
-
-jlong Java_be_labruyere_arqanore_Shaders__1getModel(JNIEnv *env, jclass cls) {
-    return (intptr_t) &arqanore::Shaders::model;
-}
-
-void Java_be_labruyere_arqanore_Shaders__1setModel(JNIEnv *env, jclass cls, jlong shader) {
-    auto ptr = (arqanore::Shader *) shader;
-    arqanore::Shaders::model = *ptr;
-}

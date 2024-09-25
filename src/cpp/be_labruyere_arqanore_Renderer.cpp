@@ -6,30 +6,6 @@
 #include "arqanore/exceptions.h"
 #include "arq_utils.h"
 
-jobject Java_be_labruyere_arqanore_Renderer__1generateModelMatrix(JNIEnv *env, jclass cls, jobject obj_pos, jobject obj_rot, jobject obj_scl) {
-    auto pos = convert_vector3(env, obj_pos);
-    auto rot = convert_quaternion(env, obj_rot);
-    auto scl = convert_vector3(env, obj_scl);
-    auto mat = arqanore::Renderer::generate_model_matrix(pos, rot, scl);
-
-    return convert_matrix4(env, mat);
-}
-
-jobject Java_be_labruyere_arqanore_Renderer__1generateViewMatrix(JNIEnv *env, jclass cls, jlong camera) {
-    auto ptr = (arqanore::Camera *) camera;
-    auto mat = arqanore::Renderer::generate_view_matrix(*ptr);
-
-    return convert_matrix4(env, mat);
-}
-
-jobject Java_be_labruyere_arqanore_Renderer__1generateProjectionMatrix(JNIEnv *env, jclass cls, jlong camera, jlong window) {
-    auto ptr1 = (arqanore::Camera *) camera;
-    auto ptr2 = (arqanore::Window *) window;
-    auto mat = arqanore::Renderer::generate_projection_matrix(*ptr1, ptr2);
-
-    return convert_matrix4(env, mat);
-}
-
 void Java_be_labruyere_arqanore_Renderer__1setShader(JNIEnv *env, jclass cls, jlong shader, jint target) {
     auto ptr = (arqanore::Shader *) shader;
 
@@ -95,20 +71,6 @@ void Java_be_labruyere_arqanore_Renderer__1renderSprite(JNIEnv *env, jclass cls,
 
     try {
         arqanore::Renderer::render_sprite(pWindow, pSprite, pos, scl, ori, angle, frame_hor, frame_vert, flip_hor, flip_vert, color);
-    } catch (arqanore::ArqanoreException &ex) {
-        throw_java_exception(env, ex.what());
-    }
-}
-
-void Java_be_labruyere_arqanore_Renderer__1renderModel(JNIEnv *env, jclass cls, jlong window, jlong model, jobject obj_pos, jobject obj_rot, jobject obj_scl, jint frame) {
-    auto ptrWindow = (arqanore::Window *) window;
-    auto ptrModel = (arqanore::Model *) model;
-    auto pos = convert_vector3(env, obj_pos);
-    auto scl = convert_vector3(env, obj_scl);
-    auto rot = convert_quaternion(env, obj_rot);
-
-    try {
-        arqanore::Renderer::render_model(ptrWindow, ptrModel, pos, rot, scl, frame);
     } catch (arqanore::ArqanoreException &ex) {
         throw_java_exception(env, ex.what());
     }
