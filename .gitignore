@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+
+out/
+build/
+cmake-build-debug/
+target/
+
+*.class
+*.iml
