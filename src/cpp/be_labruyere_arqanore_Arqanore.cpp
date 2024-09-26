@@ -1,7 +1,7 @@
 #include <string>
 #include <array>
+#include <arqanore/arqanore.h>
 #include "be_labruyere_arqanore_Arqanore.h"
-#include "arqanore/arqanore.h"
 #include "jni_utils.h"
 
 jintArray Java_be_labruyere_arqanore_Arqanore__1getVersion(JNIEnv *env, jclass cls) {

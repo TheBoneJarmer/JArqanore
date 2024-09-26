@@ -1,7 +1,8 @@
+#include <cstdint>
 #include <arqanore/polygon.h>
+#include <arqanore/exceptions.h>
 #include "be_labruyere_arqanore_Polygon.h"
 #include "jni_utils.h"
-#include "arqanore/exceptions.h"
 
 using namespace arqanore;
 
@@ -32,8 +33,8 @@ jlong Java_be_labruyere_arqanore_Polygon__1create(JNIEnv *env, jclass cls, jfloa
     }
 
     try {
-        return (intptr_t) new Polygon(vector_vertices, vector_texcoords);
-    } catch (arqanore::ArqanoreException& ex) {
+        return reinterpret_cast<intptr_t>(new Polygon(vector_vertices, vector_texcoords));
+    } catch (ArqanoreException& ex) {
         throw_java_exception(env, ex.what());
     }
 
@@ -41,5 +42,5 @@ jlong Java_be_labruyere_arqanore_Polygon__1create(JNIEnv *env, jclass cls, jfloa
 }
 
 void Java_be_labruyere_arqanore_Polygon__1destroy(JNIEnv *env, jclass cls, jlong polygon) {
-    delete (Polygon *) polygon;
+    delete reinterpret_cast<Polygon*>(polygon);
 }

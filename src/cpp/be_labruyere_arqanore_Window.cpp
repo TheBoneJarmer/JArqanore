@@ -1,11 +1,7 @@
 #include <arqanore/window.h>
-#include <iostream>
+#include <arqanore/exceptions.h>
 #include "be_labruyere_arqanore_Window.h"
-
-#include <arqanore/arqanore.h>
-
 #include "jni_utils.h"
-#include "arqanore/exceptions.h"
 #include "arq_utils.h"
 
 /* CALLBACKS */
@@ -133,106 +129,106 @@ void window_char_cb(arqanore::Window *window, unsigned int codePoint) {
 
 /* WRAPPER METHODS */
 jint Java_be_labruyere_arqanore_Window__1getWidth(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->get_width();
 }
 
 jint Java_be_labruyere_arqanore_Window__1getHeight(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->get_height();
 }
 
 jint Java_be_labruyere_arqanore_Window__1getX(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->get_x();
 }
 
 jint Java_be_labruyere_arqanore_Window__1getY(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->get_y();
 }
 
 jboolean Java_be_labruyere_arqanore_Window__1getVSync(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->get_vsync();
 }
 
 jstring Java_be_labruyere_arqanore_Window__1getTitle(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return convert_java_string(env, ptr->get_title());
 }
 
 jobject Java_be_labruyere_arqanore_Window__1getClearColor(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     auto color = convert_color(env, ptr->get_clear_color());
 
     return color;
 }
 
 jdouble Java_be_labruyere_arqanore_Window__1getFps(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->get_fps();
 }
 
 jboolean Java_be_labruyere_arqanore_Window__1isClosed(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->is_closed();
 }
 
 jboolean Java_be_labruyere_arqanore_Window__1isMinimized(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->is_minimized();
 }
 
 jboolean Java_be_labruyere_arqanore_Window__1isMaximized(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->is_maximized();
 }
 
 jboolean Java_be_labruyere_arqanore_Window__1isVisible(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     return ptr->is_visible();
 }
 
 void Java_be_labruyere_arqanore_Window__1setWidth(JNIEnv *env, jobject cls, jlong window, jint value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_width(value);
 }
 
 void Java_be_labruyere_arqanore_Window__1setHeight(JNIEnv *env, jobject cls, jlong window, jint value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_height(value);
 }
 
 void Java_be_labruyere_arqanore_Window__1setX(JNIEnv *env, jobject cls, jlong window, jint value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_x(value);
 }
 
 void Java_be_labruyere_arqanore_Window__1setY(JNIEnv *env, jobject cls, jlong window, jint value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_y(value);
 }
 
 void Java_be_labruyere_arqanore_Window__1setVSync(JNIEnv *env, jobject cls, jlong window, jboolean value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_vsync(value);
 }
 
 void Java_be_labruyere_arqanore_Window__1setTitle(JNIEnv *env, jobject cls, jlong window, jstring value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_title(convert_java_string(env, value));
 }
 
 void Java_be_labruyere_arqanore_Window__1setClearColor(JNIEnv *env, jobject cls, jlong window, jobject color) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     auto clr = convert_color(env, color);
 
     ptr->set_clear_color(clr);
 }
 
 void Java_be_labruyere_arqanore_Window__1setClosed(JNIEnv *env, jobject cls, jlong window, jboolean value) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->set_closed(value);
 }
 
@@ -278,11 +274,11 @@ jlong Java_be_labruyere_arqanore_Window__1create(JNIEnv *env, jobject cls, jint 
     ptr->on_position(window_position_cb);
     ptr->on_char(window_char_cb);
 
-    return (intptr_t) ptr;
+    return reinterpret_cast<intptr_t>(ptr);
 }
 
 void Java_be_labruyere_arqanore_Window__1destroy(JNIEnv *env, jobject cls, jlong window) {
-    delete (arqanore::Window *) window;
+    delete reinterpret_cast<arqanore::Window*>(window);
 
     delete window_open_cb_data;
     delete window_close_cb_data;
@@ -294,7 +290,7 @@ void Java_be_labruyere_arqanore_Window__1destroy(JNIEnv *env, jobject cls, jlong
 }
 
 void Java_be_labruyere_arqanore_Window__1open(JNIEnv *env, jobject cls, jlong window, jboolean fullscreen, jboolean maximized, jboolean resizable) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
 
     try {
         ptr->open(fullscreen, maximized, resizable);
@@ -310,31 +306,31 @@ void Java_be_labruyere_arqanore_Window__1open(JNIEnv *env, jobject cls, jlong wi
 }
 
 void Java_be_labruyere_arqanore_Window__1close(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->close();
 }
 
 void Java_be_labruyere_arqanore_Window__1minimize(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->minimize();
 }
 
 void Java_be_labruyere_arqanore_Window__1maximize(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->maximize();
 }
 
 void Java_be_labruyere_arqanore_Window__1restore(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->restore();
 }
 
 void Java_be_labruyere_arqanore_Window__1show(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->show();
 }
 
 void Java_be_labruyere_arqanore_Window__1hide(JNIEnv *env, jobject cls, jlong window) {
-    auto ptr = (arqanore::Window *) window;
+    auto ptr = reinterpret_cast<arqanore::Window*>(window);
     ptr->hide();
 }

@@ -1,7 +1,7 @@
 #include <string>
 #include <arqanore/joystick.h>
+#include <arqanore/exceptions.h>
 #include "be_labruyere_arqanore_Joystick.h"
-#include "arqanore/exceptions.h"
 #include "jni_utils.h"
 
 jboolean Java_be_labruyere_arqanore_Joystick__1isConnected(JNIEnv *env, jclass cls, jint jid) {
@@ -71,7 +71,7 @@ jintArray Java_be_labruyere_arqanore_Joystick__1getButtons(JNIEnv *env, jclass c
         }
 
         auto result = env->NewIntArray(axes.size());
-        env->SetIntArrayRegion(result, 0, axes.size(), (const jint *) axes_arr);
+        env->SetIntArrayRegion(result, 0, axes.size(), axes_arr);
 
         delete[] axes_arr;
         return result;

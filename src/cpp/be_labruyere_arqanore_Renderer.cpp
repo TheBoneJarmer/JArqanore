@@ -1,13 +1,13 @@
+#include <arqanore/window.h>
+#include <arqanore/font.h>
+#include <arqanore/renderer.h>
+#include <arqanore/exceptions.h>
 #include "be_labruyere_arqanore_Renderer.h"
-#include "arqanore/window.h"
-#include "arqanore/font.h"
-#include "arqanore/renderer.h"
 #include "jni_utils.h"
-#include "arqanore/exceptions.h"
 #include "arq_utils.h"
 
 void Java_be_labruyere_arqanore_Renderer__1setShader(JNIEnv *env, jclass cls, jlong shader, jint target) {
-    auto ptr = (arqanore::Shader *) shader;
+    auto ptr = reinterpret_cast<arqanore::Shader*>(shader);
 
     try {
         arqanore::Renderer::set_shader(ptr, target);
@@ -17,7 +17,7 @@ void Java_be_labruyere_arqanore_Renderer__1setShader(JNIEnv *env, jclass cls, jl
 }
 
 void Java_be_labruyere_arqanore_Renderer__1switchShader(JNIEnv *env, jclass cls, jlong shader) {
-    auto ptr = (arqanore::Shader *) shader;
+    auto ptr = reinterpret_cast<arqanore::Shader*>(shader);
 
     try {
         arqanore::Renderer::switch_shader(ptr);
@@ -27,8 +27,8 @@ void Java_be_labruyere_arqanore_Renderer__1switchShader(JNIEnv *env, jclass cls,
 }
 
 void Java_be_labruyere_arqanore_Renderer__1renderText(JNIEnv *env, jclass cls, jlong window, jlong font, jstring text, jobject obj_pos, jobject obj_scale, jobject obj_color) {
-    auto ptr_window = (arqanore::Window *) window;
-    auto ptr_font = (arqanore::Font *) font;
+    auto ptr_window = reinterpret_cast<arqanore::Window*>(window);
+    auto ptr_font = reinterpret_cast<arqanore::Font*>(font);
     auto pos = convert_vector2(env, obj_pos);
     auto color = convert_color(env, obj_color);
     auto scale = convert_vector2(env, obj_scale);
@@ -41,9 +41,9 @@ void Java_be_labruyere_arqanore_Renderer__1renderText(JNIEnv *env, jclass cls, j
 }
 
 void Java_be_labruyere_arqanore_Renderer__1renderPolygon(JNIEnv *env, jclass cls, jlong window, jlong polygon, jlong texture, jobject obj_pos, jobject obj_scl, jobject obj_ori, jobject obj_off, jfloat angle, jboolean flip_hor, jboolean flip_vert, jobject obj_color) {
-    auto ptr_window = (arqanore::Window *) window;
-    auto ptr_polygon = (arqanore::Polygon *) polygon;
-    auto pTexture = (arqanore::Texture *) nullptr;
+    auto ptr_window = reinterpret_cast<arqanore::Window*>(window);
+    auto ptr_polygon = reinterpret_cast<arqanore::Polygon*>(polygon);
+    auto pTexture = static_cast<arqanore::Texture*>(nullptr);
     auto pos = convert_vector2(env, obj_pos);
     auto scl = convert_vector2(env, obj_scl);
     auto ori = convert_vector2(env, obj_ori);
@@ -51,7 +51,7 @@ void Java_be_labruyere_arqanore_Renderer__1renderPolygon(JNIEnv *env, jclass cls
     auto color = convert_color(env, obj_color);
 
     if (texture != 0) {
-        pTexture = (arqanore::Texture *) texture;
+        pTexture = reinterpret_cast<arqanore::Texture*>(texture);
     }
 
     try {
@@ -62,8 +62,8 @@ void Java_be_labruyere_arqanore_Renderer__1renderPolygon(JNIEnv *env, jclass cls
 }
 
 void Java_be_labruyere_arqanore_Renderer__1renderSprite(JNIEnv *env, jclass cls, jlong window, jlong sprite, jobject obj_pos, jobject obj_scl, jobject obj_ori, jfloat angle, jint frame_hor, jint frame_vert, jboolean flip_hor, jboolean flip_vert, jobject obj_color) {
-    auto pWindow = (arqanore::Window *) window;
-    auto pSprite = (arqanore::Sprite *) sprite;
+    auto pWindow = reinterpret_cast<arqanore::Window*>(window);
+    auto pSprite = reinterpret_cast<arqanore::Sprite*>(sprite);
     auto pos = convert_vector2(env, obj_pos);
     auto scl = convert_vector2(env, obj_scl);
     auto ori = convert_vector2(env, obj_ori);

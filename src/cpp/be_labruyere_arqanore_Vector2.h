@@ -25,30 +25,6 @@ JNIEXPORT jfloat JNICALL Java_be_labruyere_arqanore_Vector2__1angle
 
 /*
  * Class:     be_labruyere_arqanore_Vector2
- * Method:    _cross
- * Signature: (Lbe/labruyere/arqanore/Vector2;Lbe/labruyere/arqanore/Vector2;)F
- */
-JNIEXPORT jfloat JNICALL Java_be_labruyere_arqanore_Vector2__1cross
-  (JNIEnv *, jclass, jobject, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Vector2
- * Method:    _dot
- * Signature: (Lbe/labruyere/arqanore/Vector2;Lbe/labruyere/arqanore/Vector2;)F
- */
-JNIEXPORT jfloat JNICALL Java_be_labruyere_arqanore_Vector2__1dot
-  (JNIEnv *, jclass, jobject, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Vector2
- * Method:    _normalized
- * Signature: (Lbe/labruyere/arqanore/Vector2;)Lbe/labruyere/arqanore/Vector2;
- */
-JNIEXPORT jobject JNICALL Java_be_labruyere_arqanore_Vector2__1normalized
-  (JNIEnv *, jclass, jobject);
-
-/*
- * Class:     be_labruyere_arqanore_Vector2
  * Method:    _getConstZero
  * Signature: ()Lbe/labruyere/arqanore/Vector2;
  */

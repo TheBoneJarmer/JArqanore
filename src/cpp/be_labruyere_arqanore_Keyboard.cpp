@@ -1,6 +1,6 @@
 #include <arqanore/keyboard.h>
+#include <arqanore/exceptions.h>
 #include "be_labruyere_arqanore_Keyboard.h"
-#include "arqanore/exceptions.h"
 #include "jni_utils.h"
 
 /* WRAPPER METHODS */

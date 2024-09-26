@@ -38,13 +38,13 @@ jboolean Java_be_labruyere_arqanore_Mouse__1buttonPressed(JNIEnv *env, jclass cl
 }
 
 void Java_be_labruyere_arqanore_Mouse__1hide(JNIEnv *env, jclass cls, jlong ptr) {
-    arqanore::Mouse::hide((arqanore::Window *) ptr);
+    arqanore::Mouse::hide(reinterpret_cast<arqanore::Window*>(ptr));
 }
 
 void Java_be_labruyere_arqanore_Mouse__1disable(JNIEnv *env, jclass cls, jlong ptr) {
-    arqanore::Mouse::disable((arqanore::Window *) ptr);
+    arqanore::Mouse::disable(reinterpret_cast<arqanore::Window*>(ptr));
 }
 
 void Java_be_labruyere_arqanore_Mouse__1show(JNIEnv *env, jclass cls, jlong ptr) {
-    arqanore::Mouse::show((arqanore::Window *) ptr);
+    arqanore::Mouse::show(reinterpret_cast<arqanore::Window*>(ptr));
 }

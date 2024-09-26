@@ -43,28 +43,9 @@ public class Vector2 {
         return _angle(v1, v2);
     }
 
-    public static float cross(Vector2 v1, Vector2 v2) {
-        return _cross(v1, v2);
-    }
-
-    public static float dot(Vector2 v1, Vector2 v2) {
-        return _dot(v1, v2);
-    }
-
-    public static Vector2 normalized(Vector2 v) {
-        return _normalized(v);
-    }
-
-
     private static native float _distance(Vector2 v1, Vector2 v2);
 
     private static native float _angle(Vector2 v1, Vector2 v2);
-
-    private static native float _cross(Vector2 v1, Vector2 v2);
-
-    private static native float _dot(Vector2 v1, Vector2 v2);
-
-    private static native Vector2 _normalized(Vector2 v);
 
     private static native Vector2 _getConstZero();
 

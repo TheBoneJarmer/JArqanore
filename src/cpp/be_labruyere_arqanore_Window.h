@@ -193,18 +193,10 @@ JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Window__1setUpdateCallback
 
 /*
  * Class:     be_labruyere_arqanore_Window
- * Method:    _setRender2DCallback
+ * Method:    _setRenderCallback
  * Signature: (JLjava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Window__1setRender2DCallback
-  (JNIEnv *, jobject, jlong, jstring, jstring);
-
-/*
- * Class:     be_labruyere_arqanore_Window
- * Method:    _setRender3DCallback
- * Signature: (JLjava/lang/String;Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Window__1setRender3DCallback
+JNIEXPORT void JNICALL Java_be_labruyere_arqanore_Window__1setRenderCallback
   (JNIEnv *, jobject, jlong, jstring, jstring);
 
 /*

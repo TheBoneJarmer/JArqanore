@@ -265,25 +265,14 @@ public class Window extends Pointer {
     }
 
     /**
-     * Sets the onRender callback for 2D
+     * Sets the onRender callback
      *
      * @param className  The fully qualified name of the class
      * @param methodName The method name from the class
      * @throws ArqanoreException If callback did not register correctly
      */
-    public void onRender2D(String className, String methodName) throws ArqanoreException {
-        _setRender2DCallback(address, className, methodName);
-    }
-
-    /**
-     * Sets the onRender callback for 3D
-     *
-     * @param className  The fully qualified name of the class
-     * @param methodName The method name from the class
-     * @throws ArqanoreException If callback did not register correctly
-     */
-    public void onRender3D(String className, String methodName) throws ArqanoreException {
-        _setRender3DCallback(address, className, methodName);
+    public void onRender(String className, String methodName) throws ArqanoreException {
+        _setRenderCallback(address, className, methodName);
     }
 
     /**
@@ -365,9 +354,7 @@ public class Window extends Pointer {
 
     private native void _setUpdateCallback(long window, String className, String methodName);
 
-    private native void _setRender2DCallback(long window, String className, String methodName);
-
-    private native void _setRender3DCallback(long window, String className, String methodName);
+    private native void _setRenderCallback(long window, String className, String methodName);
 
     private native void _setResizeCallback(long window, String className, String methodName);
 

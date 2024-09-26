@@ -1,6 +1,5 @@
-#include <cinttypes>
+#include <arqanore/color.h>
 #include "be_labruyere_arqanore_Color.h"
-#include "arqanore/color.h"
 #include "arq_utils.h"
 
 jobject Java_be_labruyere_arqanore_Color__1getConstRed(JNIEnv *env, jclass cls) {
